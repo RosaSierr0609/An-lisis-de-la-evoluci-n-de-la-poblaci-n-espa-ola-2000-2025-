@@ -41,6 +41,7 @@ El proyecto sigue una arquitectura tipo **Medallion** implementada en Microsoft 
 <img width="1071" height="95" alt="image" src="https://github.com/user-attachments/assets/cf14556c-826a-412a-ae5f-7a01a042e826" />
 
 
+
 ```text
                  INE
            Archivos Excel
@@ -70,14 +71,15 @@ El proyecto sigue una arquitectura tipo **Medallion** implementada en Microsoft 
 
 # ⚙️ Proceso ETL
 
-Durante el desarrollo del proyecto se realizaron las siguientes fases:
+El proyecto sigue un flujo completo de preparación y análisis de datos:
 
-- Ingesta automática de los archivos del INE mediante Dataflow Gen2.
-- Estandarización de provincias y municipios.
-- Limpieza y transformación de datos.
-- Creación del modelo dimensional.
-- Desarrollo de medidas DAX.
-- Construcción del dashboard interactivo.
+1. Carga inicial de los archivos del INE mediante PySpark y Microsoft Fabric.
+2. Ingesta y transformación con Dataflow Gen2.
+3. Limpieza y estandarización de municipios y provincias.
+4. Almacenamiento en Lakehouse siguiendo una arquitectura Medallion.
+5. Modelado en esquema estrella.
+6. Desarrollo de medidas DAX.
+7. Construcción del dashboard en Power BI.
 
 ---
 
@@ -105,6 +107,9 @@ El informe está compuesto por tres páginas.
 
 ## 1️⃣ Visión general
 
+<img width="1379" height="723" alt="image" src="https://github.com/user-attachments/assets/7fe4922b-daaa-49a9-ba3e-f548cb0d876d" />
+
+
 - Evolución de la población española.
 - Evolución de hombres y mujeres.
 - Indicadores principales.
@@ -113,6 +118,9 @@ El informe está compuesto por tres páginas.
 ---
 
 ## 2️⃣ Análisis territorial
+
+<img width="1393" height="738" alt="image" src="https://github.com/user-attachments/assets/bc5ac521-3057-4001-8550-a47ed52ccb80" />
+
 
 - Crecimiento por comunidades autónomas.
 - Provincias con mayor crecimiento.
@@ -142,6 +150,7 @@ Resumen de los principales hallazgos del análisis y de las limitaciones del con
 # 🛠 Tecnologías utilizadas
 
 - Microsoft Fabric
+- PySpark
 - Dataflow Gen2
 - Lakehouse
 - Power Query
