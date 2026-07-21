@@ -191,4 +191,4 @@ GitHub:
 https://github.com/RosaSierr0609
 
 LinkedIn:
-*(Añadir enlace)*
+*www.linkedin.com/in/rosa-m-sierra-almeria*
