@@ -2,34 +2,147 @@
 
 Proyecto de análisis de datos desarrollado con **Microsoft Fabric** y **Power BI** utilizando datos oficiales del **Instituto Nacional de Estadística (INE)**.
 
-El objetivo del proyecto es analizar la evolución de la población española entre los años **2000 y 2025**, identificando las principales tendencias demográficas y las diferencias territoriales mediante un dashboard interactivo.
+El objetivo del proyecto es analizar la evolución de la población española entre los años **2000 y 2025**, identificando las principales tendencias demográficas y su distribución territorial mediante un proceso completo de ingesta, transformación, modelado y visualización de datos.
 
 ---
 
-## 📌 Objetivos
+# 📊 Dashboard
+
+> *(Añadir aquí una captura del dashboard o un GIF del informe)*
+
+---
+
+# 🎯 Objetivos
 
 - Analizar la evolución de la población española entre 2000 y 2025.
 - Identificar las provincias y comunidades autónomas con mayor crecimiento y mayor pérdida de población.
+- Analizar la distribución territorial de la población.
 - Estudiar la evolución de la población masculina y femenina.
-- Presentar los resultados mediante un dashboard interactivo que facilite la interpretación de los datos.
+- Desarrollar un flujo de datos completo utilizando Microsoft Fabric.
 
 ---
 
-## 📊 Dataset
+# 📂 Fuente de datos
 
-**Fuente oficial:**
+**Instituto Nacional de Estadística (INE)**
 
-- Instituto Nacional de Estadística (INE)
+Datos oficiales de población municipal correspondientes al periodo **2000-2025**.
 
-Datos utilizados:
+Los datos incluyen:
 
-- Población por municipios.
-- Distribución por sexo.
-- Evolución anual (2000-2025).
+- Comunidades Autónomas
+- Provincias
+- Municipios
+- Año
+- Población total
+- Población masculina
+- Población femenina
 
 ---
 
-## 🛠 Tecnologías utilizadas
+# 🏗️ Arquitectura del proyecto
+
+El proyecto sigue una arquitectura tipo **Medallion** implementada en Microsoft Fabric.
+
+```text
+                 INE
+           Archivos Excel
+                  │
+                  ▼
+          Dataflow Gen2
+                  │
+                  ▼
+         Lakehouse RAW
+                  │
+                  ▼
+       Lakehouse Bronze
+        Limpieza y calidad
+                  │
+                  ▼
+        Lakehouse Silver
+      Modelo analítico limpio
+                  │
+                  ▼
+          Modelo Estrella
+                  │
+                  ▼
+             Power BI
+```
+
+---
+
+# ⚙️ Proceso ETL
+
+Durante el desarrollo del proyecto se realizaron las siguientes fases:
+
+- Ingesta automática de los archivos del INE mediante Dataflow Gen2.
+- Estandarización de provincias y municipios.
+- Limpieza y transformación de datos.
+- Creación del modelo dimensional.
+- Desarrollo de medidas DAX.
+- Construcción del dashboard interactivo.
+
+---
+
+# ⭐ Modelo de datos
+
+El dashboard utiliza un modelo en estrella compuesto por:
+
+### Tabla de hechos
+
+- Fact_Poblacion
+
+### Tablas dimensión
+
+- Dim_Calendario
+- Dim_Provincia
+- Dim_Municipio
+
+Este modelo facilita el análisis temporal y territorial manteniendo un rendimiento óptimo en Power BI.
+
+---
+
+# 📈 Dashboard
+
+El informe está compuesto por tres páginas.
+
+## 1️⃣ Visión general
+
+- Evolución de la población española.
+- Evolución de hombres y mujeres.
+- Indicadores principales.
+- Incremento porcentual de la población.
+
+---
+
+## 2️⃣ Análisis territorial
+
+- Crecimiento por comunidades autónomas.
+- Provincias con mayor crecimiento.
+- Provincias con mayor descenso.
+- Municipios con mayor incremento de población.
+- Municipios con mayor pérdida de población.
+
+---
+
+## 3️⃣ Insights y conclusiones
+
+Resumen de los principales hallazgos del análisis y de las limitaciones del conjunto de datos.
+
+---
+
+# 📌 Principales hallazgos
+
+- La población española experimentó un crecimiento sostenido entre 2000 y 2025.
+- El crecimiento poblacional no fue homogéneo entre territorios.
+- Las provincias próximas a grandes áreas metropolitanas concentraron los mayores incrementos de población.
+- Algunas provincias del interior continuaron perdiendo habitantes durante el periodo analizado.
+- La evolución de la población masculina y femenina fue muy similar.
+- El padrón permite analizar la evolución de la población residente, aunque no los flujos migratorios que explican dichos cambios.
+
+---
+
+# 🛠 Tecnologías utilizadas
 
 - Microsoft Fabric
 - Dataflow Gen2
@@ -41,76 +154,35 @@ Datos utilizados:
 
 ---
 
-## ⚙️ Proceso ETL
-
-El proyecto sigue una arquitectura basada en Microsoft Fabric:
-
-1. Ingesta de los archivos originales del INE.
-2. Limpieza y transformación de datos mediante Dataflow Gen2.
-3. Estandarización de municipios y provincias.
-4. Modelado en esquema estrella.
-5. Creación de medidas DAX.
-6. Desarrollo del dashboard en Power BI.
-
----
-
-## 📈 Dashboard
-
-El informe está compuesto por tres páginas:
-
-### 1️⃣ Visión general
-
-- Evolución de la población española.
-- Evolución de hombres y mujeres.
-- Indicadores principales.
-
-### 2️⃣ Análisis territorial
-
-- Crecimiento por comunidades autónomas.
-- Provincias con mayor crecimiento y mayor descenso.
-- Municipios con mayor incremento y pérdida de población.
-
-### 3️⃣ Insights y conclusiones
-
-Resumen de los principales hallazgos del análisis y limitaciones del conjunto de datos.
-
----
-
-## 📌 Principales conclusiones
-
-- La población española experimentó un crecimiento sostenido entre 2000 y 2025.
-- El crecimiento no fue homogéneo entre territorios.
-- Las provincias próximas a grandes áreas metropolitanas registraron los mayores incrementos poblacionales.
-- Algunas provincias del interior continúan mostrando tendencias de despoblación.
-- La evolución de la población masculina y femenina fue muy similar durante el periodo analizado.
-- El conjunto de datos permite analizar la evolución demográfica, pero no estudiar directamente los movimientos migratorios.
-
----
-
-## 📂 Estructura del proyecto
+# 📁 Estructura del repositorio
 
 ```
-📁 Data
-📁 ETL
-📁 Power BI
+📂 Data
+📂 ETL
+📂 Dashboard
+📂 Docs
 📄 README.md
 ```
 
 ---
 
-## 🚀 Posibles mejoras
+# 🚀 Posibles mejoras
 
 - Incorporar datos oficiales de migraciones del INE.
-- Analizar la evolución por grupos de edad.
-- Incluir indicadores de natalidad y mortalidad.
-- Añadir análisis predictivos mediante modelos de forecasting.
+- Añadir indicadores de natalidad y mortalidad.
+- Incorporar análisis por grupos de edad.
+- Implementar modelos predictivos de evolución demográfica.
 
 ---
 
-## 👤 Autor
+# 👩‍💻 Autor
 
 **Rosa Sierra**
 
-Data Analyst | Power BI | SQL | Python | Microsoft Fabric
+**Data Analyst | Power BI | SQL | Python | Microsoft Fabric**
 
-GitHub: https://github.com/RosaSierr0609
+GitHub:
+https://github.com/RosaSierr0609
+
+LinkedIn:
+*(Añadir enlace)*
