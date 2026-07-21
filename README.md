@@ -6,12 +6,6 @@ El objetivo del proyecto es analizar la evolución de la población española en
 
 ---
 
-# 📊 Dashboard
-
-> *(Añadir aquí una captura del dashboard o un GIF del informe)*
-
----
-
 # 🎯 Objetivos
 
 - Analizar la evolución de la población española entre 2000 y 2025.
@@ -43,6 +37,9 @@ Los datos incluyen:
 # 🏗️ Arquitectura del proyecto
 
 El proyecto sigue una arquitectura tipo **Medallion** implementada en Microsoft Fabric.
+
+<img width="1071" height="95" alt="image" src="https://github.com/user-attachments/assets/cf14556c-826a-412a-ae5f-7a01a042e826" />
+
 
 ```text
                  INE
